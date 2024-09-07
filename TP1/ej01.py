@@ -26,13 +26,11 @@ def mayor_estricto(a: int, b: int, c: int) -> int:
             if a != b:
                 if a != c:
                     mayor = a
-
     if b > a:
         if b > c:
             if b != a:
                 if b != c:
                     mayor = b
-
     if c > a:
         if c > b:
             if c != a:
@@ -40,7 +38,6 @@ def mayor_estricto(a: int, b: int, c: int) -> int:
                     mayor = c
 
     return mayor
-
 
 def main() -> None:
     '''

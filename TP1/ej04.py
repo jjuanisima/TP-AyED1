@@ -46,11 +46,6 @@ def calcular_cambio(total_compra: int, dinero_recibido: int) -> str:
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa el total de la compra y el dinero recibido
-
-    Pre:
-        la función no recibe parámetros
-    Post:
-        la función no devuelve ningún valor
     '''
 
     try:

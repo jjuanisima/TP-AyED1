@@ -56,11 +56,6 @@ def diasiguiente(dia: int, mes: int, año: int) -> str:
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa la fecha inicial
-
-    Pre:
-        la función no recibe parámetros
-    Post:
-        la función no devuelve ningún valor
     '''
 
     try:

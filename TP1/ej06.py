@@ -16,18 +16,13 @@ def concatenar_numeros(a: int, b: int) -> int:
     Post:
         numero_final (int): la concatenación de "a" y "b"
     '''
-    
+
     numero_final = a * (10 ** len(str(b))) + b
     return f"Número concatenado: {numero_final}"
 
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa los dos números a concatenar
-
-    Pre:
-        la función no recibe parámetros
-    Post:
-        la función no devuelve ningún valor
     '''
 
     try:

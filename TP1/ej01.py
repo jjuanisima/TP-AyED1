@@ -19,6 +19,7 @@ def mayor_estricto(a: int, b: int, c: int) -> int:
         int a, b ó c: el que resulte ser el mayor estricto entre los tres
         int -1: los tres números son iguales, o sea que no hay un mayor estricto
     '''
+
     mayor = -1
 
     if a > b:
@@ -36,18 +37,13 @@ def mayor_estricto(a: int, b: int, c: int) -> int:
             if c != a:
                 if c != b:
                     mayor = c
-
     return mayor
 
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa los tres números solicitados
-
-    Pre:
-        la función no recibe parámetros
-    Post:
-        la función no devuelve ningún valor
     '''
+
     try:
         a = int(input("Número A: "))
         b = int(input("Número B: "))

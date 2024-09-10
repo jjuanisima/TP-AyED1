@@ -17,6 +17,7 @@ def calcular_gastos(viajes: int) -> float:
     Post:
         float: la tarifa con su respectivo descuento
     '''
+
     tarifa_maxima = 650
     total = 0.0
 
@@ -37,6 +38,7 @@ def main() -> None:
     Post:
         la función no devuelve ningún valor
     '''
+    
     while True:
         try:
             viajes = int(input("Cantidad de viajes realizados: "))

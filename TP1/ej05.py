@@ -35,13 +35,8 @@ def num_triangular(num: int) -> bool:
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa el número a evaluar
-
-    Pre:
-        la función no recibe parámetros
-    Post:
-        la función no devuelve ningún valor
     '''
-    
+
     try:
         num = int(input("Número: "))
 

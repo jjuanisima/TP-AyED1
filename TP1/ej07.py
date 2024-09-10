@@ -53,7 +53,6 @@ def diasiguiente(dia: int, mes: int, año: int) -> str:
 
     return f"La fecha siguiente es {dia}/{mes}/{año}"
 
-
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa la fecha inicial

@@ -32,22 +32,13 @@ def calcular_gastos(viajes: int) -> float:
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa la cantidad de viajes realizados
-
-    Pre:
-        la función no recibe parámetros
-    Post:
-        la función no devuelve ningún valor
     '''
-    
+
     while True:
         try:
             viajes = int(input("Cantidad de viajes realizados: "))
-
-            if viajes > 1:
-                total = calcular_gastos(viajes)
-                print(f"El total gastado en {viajes} viajes es de ${total} :)")
-            else:
-                print(f"ERROR. Intenta con una cantidad de viajes positiva.")
+            total = calcular_gastos(viajes)
+            print(f"El total gastado en {viajes} viajes es de ${total} :)")
         except ValueError:
             print("ERROR. Intenta ingresando un número entero.")
     return None

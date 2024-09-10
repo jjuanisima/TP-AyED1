@@ -39,7 +39,7 @@ def diasiguiente(dia: int, mes: int, año: int) -> str:
         mes (int): el mes del año
         año (int): el año
     Post:
-        srt: la fecha del día siguiente
+        str: la fecha del día siguiente
     '''
 
     dias = dias_por_mes(mes, año)

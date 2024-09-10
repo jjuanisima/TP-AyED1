@@ -49,11 +49,6 @@ def anio_bisiesto(anio: int) -> bool:
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa la fecha a validar
-
-    Pre:
-        la función no recibe parámetros
-    Post:
-        la función no devuelve ningún valor
     '''
 
     while True:

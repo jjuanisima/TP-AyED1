@@ -18,7 +18,7 @@ def concatenar_numeros(a: int, b: int) -> int:
     '''
 
     numero_final = a * (10 ** len(str(b))) + b
-    return f"Número concatenado: {numero_final}"
+    return numero_final
 
 def main() -> None:
     '''

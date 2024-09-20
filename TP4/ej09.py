@@ -11,7 +11,7 @@ def ordenar_palabras(cadena: str) -> str:
     Crea una cadena con las palabras de la cadena principal, ordenándolas según su longitud y dejando espacio entre ellas
 
     Pre:
-        cadena (str): la cadena ingresada por el usuario
+        cadena (str): la cadena principal
     Post:
         str: retorna la cadena nueva
     '''
@@ -39,7 +39,7 @@ def main() -> None:
     '''
     Función principal, donde se ejecuta el programa
     '''
-    
+
     cadena = "La vaca Lola tiene cabeza y tiene cola"
     print(ordenar_palabras(cadena))
 

@@ -3,7 +3,7 @@ Generar e imprimir una lista por comprensión entre A y B con los múltiplos de 
 que no sean múltiplos de 5. A y B se ingresar desde el teclado. 
 '''
 
-def multiplos7(a, b):
+def multiplos7(a, b) -> list:
     '''
     Crea una lista con los elementos de A y B que sean múltiplos de 7 pero no de 5
 

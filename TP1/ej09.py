@@ -29,6 +29,7 @@ def contar_naranjas(cant_naranjas) -> tuple:
         naranjas_jugo (int): cantidad de naranajas para jugo
         sobrantes (int): cantidad de naranjas que sobran
     '''
+    
     cajones = 0
     naranjas_jugo = 0
     peso_total = 0
@@ -56,6 +57,7 @@ def calcular_camiones(cajones) -> int:
     Post:
         camiones (int): cantidad de camiones necesarios para transportar la cosecha
     '''
+
     capacidad_camion = 500
     camiones = cajones // capacidad_camion
     if cajones % capacidad_camion != 0:
@@ -65,8 +67,8 @@ def calcular_camiones(cajones) -> int:
 def main() -> None:
     '''
     Función principal, donde el usuario ingresa la cantidad de naranjas
-    ''''''
     '''
+
     try:
         cant_naranjas = int(input("Cantidad de naranjas cosechadas: "))
 

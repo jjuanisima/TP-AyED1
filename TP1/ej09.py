@@ -18,7 +18,17 @@ caso contrario el camión no serán despachado por su alto costo.
 
 import random as rn
 
-def contar_naranjas(cant_naranjas):
+def contar_naranjas(cant_naranjas) -> tuple:
+    '''
+    Cuenta las naranjas según el peso. Si pesan entre 200 y 300 gramos van al cajón, si su peso está fuera de ese rango se clasifican para jugo, y se consideran las naranjas sobrantes
+
+    Pre:
+        cant_naranjas (int): cantidad de naranjas cosechadas
+    Post:
+        cajones (int): cantidad de cajones llenos
+        naranjas_jugo (int): cantidad de naranajas para jugo
+        sobrantes (int): cantidad de naranjas que sobran
+    '''
     cajones = 0
     naranjas_jugo = 0
     peso_total = 0
@@ -37,7 +47,15 @@ def contar_naranjas(cant_naranjas):
     sobrantes = peso_total // 100
     return cajones, naranjas_jugo, sobrantes
 
-def calcular_camiones(cajones):
+def calcular_camiones(cajones) -> int:
+    '''
+    Calcula la cantidad de camiones necesarios
+
+    Pre:
+        cajones (int): cantidad de cajones que hay que guardar en los camiones
+    Post:
+        camiones (int): cantidad de camiones necesarios para transportar la cosecha
+    '''
     capacidad_camion = 500
     camiones = cajones // capacidad_camion
     if cajones % capacidad_camion != 0:
@@ -45,6 +63,10 @@ def calcular_camiones(cajones):
     return camiones
 
 def main() -> None:
+    '''
+    Función principal, donde el usuario ingresa la cantidad de naranjas
+    ''''''
+    '''
     try:
         cant_naranjas = int(input("Cantidad de naranjas cosechadas: "))
 

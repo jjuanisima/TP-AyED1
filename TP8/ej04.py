@@ -8,7 +8,7 @@ el uso de conjuntos para resolver este ejercicio.
 
 def encajan_fichas(ficha1: tuple, ficha2: tuple) -> bool:
     '''
-    Determina si dos fichas de dominó encajan, o sea si el último número de la primera fecha coincide con el primer número de la segunda ficha
+    Determina si dos fichas de dominó encajan, o sea si ambas fichas tienen un número en común
 
     Pre:
         ficha1 (tuple): una tupla con dos números, la primera ficha
@@ -17,10 +17,7 @@ def encajan_fichas(ficha1: tuple, ficha2: tuple) -> bool:
         devuelve True si las fichas encajan, False en caso contrario
     '''
 
-    conjunto_ficha1 = set(ficha1)
-    conjunto_ficha2 = set(ficha2)
-
-    return not conjunto_ficha1.isdisjoint(conjunto_ficha2)
+    return not set(ficha1).isdisjoint(set(ficha2))
 
 def main() -> bool:
     '''
@@ -28,6 +25,7 @@ def main() -> bool:
 
     Esta función no recibe parámetros y no devuelve ningún valor
     '''
+
     ficha1 = (3, 4)
     ficha2 = (5, 4)
 

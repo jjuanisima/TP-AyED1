@@ -36,19 +36,6 @@ def incrementar_precios(lista_precios: dict) -> dict:
             lista_precios[producto] = lista_precios[producto] + (lista_precios[producto] * 0.15)
     return lista_precios
 
-def printear_stock(lista_precios: dict) -> None:
-    '''
-    Printea el stock de productos y sus precios
-
-    Pre:
-        lista_precios (dict): diccionario con los precios de los productos
-    Post:
-        la función no devuelve ningún valor
-    '''
-    print("Stock actual:")
-    for producto, precio in lista_precios.items():
-        print(f"- {producto}: ${precio:.2f}")
-
 def mas_costoso(lista_precios: dict) -> tuple:
     '''
     Encuentra el producto más caro del stock
@@ -90,7 +77,12 @@ def main() -> None:
             print("El producto ya existe en el almacén :|")
 
     incrementar_precios(lista_precios)
-    printear_stock(lista_precios)
+    print("Stock actual:")
+    for producto, precio in lista_precios.items():
+        if 'cuaderno' in producto:
+            print(f"- {producto}: ${precio:.2f} (+15%)")
+        else:
+            print(f"- {producto}: ${precio:.2f}")
 
     producto, precio = mas_costoso(lista_precios)
     print(f"\nProducto más costoso: '{producto}' - ${precio}")

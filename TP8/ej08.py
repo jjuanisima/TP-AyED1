@@ -14,8 +14,7 @@ def generar_diccionario() -> dict:
         devuelve un diccionario con la estructura {número: cuadrado}
     '''
 
-    diccionario = {num: num**2 for num in range(1, 21)}
-    return diccionario
+    return {num: num**2 for num in range(1, 21)}
 
 def main() -> None:
     '''
@@ -24,6 +23,8 @@ def main() -> None:
     Esta función no recibe parámetros y no devuelve ningún valor
     '''
     
-    print(generar_diccionario())
+    diccionario = generar_diccionario()
+    for clave, valor in diccionario.items():
+        print(f"{clave} ^ 2: {valor}")
 
 main()

@@ -25,8 +25,7 @@ def son_ortogonales(vectora: tuple, vectorb: tuple) -> bool:
         devuelve True si el producto escalar de los vectores es cero (son ortogonales), False en caso contrario
     '''
 
-    producto = sum(a * b for a, b in zip(vectora, vectorb))
-    return producto == 0
+    return sum(a * b for a, b in zip(vectora, vectorb)) == 0
 
 def main() -> None:
     '''

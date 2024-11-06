@@ -23,24 +23,6 @@ def buscarclave(diccionario: dict, valor: int) -> list:
             resultado.append(piloto)
     return resultado
 
-def printear_resultado(resultado: list, diccionario: dict) -> None:
-    '''
-    Printea los resultados de la búsqueda
-
-    Pre:
-        resultado (list): lista de tuplas con pilotos y sus campeonatos
-        diccionario (dict): un diccionario que asocia pilotos con sus campeonatos
-    Post:
-        la función no devuelve ningún calor
-    '''
-
-    if resultado:
-        for piloto in resultado:
-            campeonatos = diccionario[piloto]
-            print(f"{piloto}: {campeonatos} campeonatos")
-    else:
-        print("Ningún piloto tiene ese número de campeonatos :(")
-
 def main() -> None:
     '''
     Función principal, donde se ejecuta el programa
@@ -60,7 +42,12 @@ def main() -> None:
     try:
         valor = int(input("Valor a buscar: "))
         resultado = buscarclave(diccionario, valor)
-        printear_resultado(resultado, diccionario)
+        if resultado:
+            for piloto in resultado:
+                campeonatos = diccionario[piloto]
+                print(f"{piloto}: {campeonatos} campeonatos")
+        else:
+            print("Ningún piloto tiene ese número de campeonatos :(")
     except ValueError:
         print("ERROR. Revisa de ingresar un número válido :|")
     

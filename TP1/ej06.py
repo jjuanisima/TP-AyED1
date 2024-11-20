@@ -8,29 +8,22 @@ mite utilizar facilidades de Python no vistas en clase.
 
 def concatenar_numeros(a: int, b: int) -> int:
     '''
-    Multiplica al número "a" por 10 elevado a la cantidad de dígitos que tenga "b", para que después sea posible sumarle "b" y que se concatenen los números
-
+    Se le agrega a 'a' una cant. de ceros equivalente a la cant. de dígitos de 'b' para que sea posible la concatenación
     Pre:
-        a (int): número A
-        b (int): número B
+        a, b (int): números a concatenar
     Post:
-        numero_final (int): la concatenación de "a" y "b"
+        devuelve el número final
     '''
 
     numero_final = a * (10 ** len(str(b))) + b
     return numero_final
 
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa los dos números a concatenar
-    '''
-
+if __name__ == "__main__":
     try:
         a = int(input("Número A: "))
         b = int(input("Número B: "))
-        print(concatenar_numeros(a, b))
+
+        resultado = concatenar_numeros(a, b)
+        print(f"Resultado: {resultado}")
     except ValueError:
         print("ERROR. Revisa que ambos números sean enteros.")
-    return None
-
-main()

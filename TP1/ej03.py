@@ -15,10 +15,10 @@ def calcular_gastos(viajes: int) -> float:
     Pre:
         viajes (int): cantidad de viajes realizados en el mes
     Post:
-        float: la tarifa con su respectivo descuento
+        devuelve el total gastado en viajes
     '''
 
-    tarifa_maxima = 650
+    tarifa_maxima = 650.0
     total = 0.0
 
     if viajes > 40:
@@ -29,18 +29,14 @@ def calcular_gastos(viajes: int) -> float:
         total = viajes * (tarifa_maxima * 0.80)
     return total
 
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa la cantidad de viajes realizados
-    '''
+if __name__ == "__main__":
+    try:
+        viajes = int(input("Cantidad de viajes realizados: "))
 
-    while True:
-        try:
-            viajes = int(input("Cantidad de viajes realizados: "))
+        if viajes < 1:
+            print("ERROR. Ingresa una cantidad válida de viajes :|")
+        else:
             total = calcular_gastos(viajes)
             print(f"El total gastado en {viajes} viajes es de ${total} :)")
-        except ValueError:
-            print("ERROR. Intenta ingresando un número entero.")
-    return None
-
-main()
+    except ValueError:
+        print("ERROR. Intenta ingresando un número entero.")

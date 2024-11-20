@@ -12,57 +12,34 @@ def fecha_valida(dia: int, mes: int, anio: int) -> bool:
     Verifica si la fecha ingresada es válida
 
     Pre:
-        dia (int): día del mes
-        mes (int): mes del año
-        anio (int): el año
+        dia, mes, anio (int): fecha a validar
     Post:
-        bool True: la fecha es válida
-        bool False: la fecha es inválida
+        devuelve True si la fecha es válida, en caso contrario False
     '''
 
-    if mes < 1 or mes > 12:
+    if mes < 1 or mes > 12 or dia < 1 or anio < 1:
         return False
-    if anio < 1:
-        return False
-    if mes in (4, 6, 9, 11):
-        return dia >= 1 and dia <= 30
-    if mes in (1, 3, 5, 7, 8, 10, 12):
-        return dia >= 1 and dia <= 31
+    
     if mes == 2:
-        if anio_bisiesto(anio):
+        if (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0):
             return dia <= 29
-        return dia <= 28
+        else:
+            return dia <= 28
+        
+    if mes in (4, 6, 9, 11):
+        return dia <= 30
+    
+    return dia <= 31
 
-def anio_bisiesto(anio: int) -> bool:
-    '''
-    Verifica si el año es bisiesto
-
-    Pre:
-        anio (int): el año a verificar
-    Post:
-        bool True: si es divisible por 400 o también es divisible por 4 pero no por 100, entonces el año es bisiesto
-        bool False: si no se cumple la condición, el año no es bisiesto
-    '''
-
-    return (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0)
-
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa la fecha a validar
-    '''
-
-    while True:
-        try:
-            dia = int(input("Día: "))
-            mes = int(input("Mes: "))
-            anio = int(input("Año: "))
-            
-            if fecha_valida(dia, mes, anio):
-                print(f"La fecha {dia}/{mes}/{anio} es válida :)\n")
-            else:
-                print(f"La fecha {dia}/{mes}/{anio} es inválida :(\n")
-        except ValueError:
-            print("ERROR. Intenta de nuevo ingresando números enteros.\n")
-    return None
-
-main()
+if __name__ == "__main__":
+    try:
+        dia = int(input("Día: "))
+        mes = int(input("Mes: "))
+        anio = int(input("Año: "))
+        
+        if fecha_valida(dia, mes, anio):
+            print(f"La fecha {dia}/{mes}/{anio} es válida :)\n")
+        else:
+            print(f"La fecha {dia}/{mes}/{anio} es inválida :(\n")
+    except ValueError:
+        print("ERROR. Ingresa números enteros válidos :|\n")

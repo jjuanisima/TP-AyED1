@@ -12,48 +12,44 @@ billete de $200, 1 billete de $100 y 3 billetes de $10.
 '''
 
 
-def calcular_cambio(total_compra: int, dinero_recibido: int) -> str:
+def calcular_cambio(vuelto: int) -> list:
     '''
     Calcula cuánto cambio se tiene que devolver, considerando los billetes existentes
 
     Pre:
-        total_compra (int): el monto total de la compra
-        dinero_recibido (int): el dinero recibido (puede ser mayor al monto de la compra)
+        vuelto (int): el vuelto a calcular en billetes
     Post:
-        str: cantidad de billetes de vuelto
+        devuelve una lista de tuplas (cantidad, billete) para el vuelto
     '''
 
     billetes = (5000, 1000, 500, 200, 100, 50, 10)
-    
-    if total_compra > dinero_recibido:
-        return f"ERROR. El dinero recibido es insuficiente."
 
-    vuelto = dinero_recibido - total_compra
     billetes_vuelto = []
+    for billete in billetes:
+        cantidad = vuelto // billete
+        if cantidad > 0:
+            billetes_vuelto.append((cantidad, billete))
+        vuelto %= billete
+    
+    return billetes_vuelto
 
-    for i in range(len(billetes)):
-        cant_billetes = vuelto // billetes[i]
-        billetes_vuelto.append(cant_billetes)
-        vuelto -= cant_billetes * billetes[i]
-
-    if vuelto > 0:
-        return f"ERROR. No se puede dar el cambio restante con los billetes disponibles :("
-
-    for i in range(len(billetes)):
-        if billetes_vuelto[i] > 0:
-            print(f"{billetes_vuelto[i]} billete(s) de ${billetes[i]}")
-
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa el total de la compra y el dinero recibido
-    '''
-
+if __name__ == "__main__":
     try:
         total_compra = int(input("Total de la compra: "))
         dinero_recibido = int(input("Dinero recibido: "))
-        print(calcular_cambio(total_compra, dinero_recibido))
-    except ValueError:
-        print("ERROR. Revisa que los valores de compra y dinero recibido sean números enteros.")
-    return None
 
-main()
+        if dinero_recibido < total_compra:
+            print("ERROR. El dinero recibido es insuficiente :|")
+        else:
+            vuelto = dinero_recibido - total_compra
+            if vuelto == 0:
+                print("No hay cambio que devolver :)")
+            elif vuelto % 10 != 0:
+                print("No es posible dar el cambio exacto con los billetes disponibles :(")
+            else:
+                print(f"\nEl cambio total es de ${vuelto}:")
+                resultado = calcular_cambio(vuelto)
+                for cant, billete in resultado:
+                    print(f"{cant} billete(s) de ${billete}")
+    except ValueError:
+        print("ERROR. Revisa que los valores de compra y dinero recibido sean números enteros :|")

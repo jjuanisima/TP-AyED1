@@ -15,28 +15,9 @@ vuelven True o False. No se permite utilizar ayudas externas a las mismas.
 
 
 num_oblongo = lambda num: any(num == i * (i + 1) for i in range(num))
-'''
-def num_oblongo(num: int) -> bool:
-    for i in range(num):
-        if i * (i + 1) == num:
-            return True
-    return False
-'''
-
 num_triangular = lambda num: any(num == i * (i + 1) // 2 for i in range(1, num))
-'''
-def num_triangular(num: int) -> bool:
-    for i in range(1, num):
-        if i * (i + 1) // 2 == num:
-            return True
-    return False
-'''
 
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa el número a evaluar
-    '''
-
+if __name__ == "__main__":
     try:
         num = int(input("Número: "))
 
@@ -51,6 +32,3 @@ def main() -> None:
             print(f"El número {num} no es triangular :(")
     except ValueError:
         print(f"ERROR. Revisa de ingresar un número entero.")
-    return None
-
-main()

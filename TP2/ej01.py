@@ -22,75 +22,68 @@ def cargar_lista() -> list:
     Pre:
         La función no recibe parámetros
     Post:
-        lista (list): lista con entre 10 y 99 números enteros aleatorios de cuatro dígitos
+        devuelve una lista con entre 10 y 99 números enteros aleatorios de cuatro dígitos
     '''
 
-    for i in range(rn.randint(10, 99)):
-        lista.append(rn.randint(1000, 9999))
-    return lista
+    return [rn.randint(1000, 9999) for _ in range(rn.randint(10, 99))]
 
-def calcular_producto() -> int:
+def calcular_producto(lista: list) -> int:
     '''
     Calcula el producto de todos los elementos de la lista
 
     Pre:
-        La función no recibe parámetros
+        lista (list): la lista de la cual multiplicar sus elementos
     Post:
-        producto (int): el producto de todos los números de la lista
+        devuelve el producto de todos los números de la lista
     '''
 
     producto = 1
-    for i in range(len(lista)):
-        producto *= lista[i]
+    for num in lista:
+        producto *= num
     return producto
 
-def eliminar_valor(valor) -> list:
+def eliminar_valor(lista: list, valor: int) -> list:
     '''
     Elimina todas las apariciones de un valor en la lista
 
     Pre:
+        lista (list): la lista de la cual eliminar el valor
         valor (int): el valor a eliminar
     Post:
-        lista (list): la lista sin el valor
+        devuelve la lista sin el valor
     '''
 
-    for i in range(len(lista)):
-        if valor in lista:
-            lista.remove(valor)
+    while valor in lista:
+        lista.remove(valor)
     return lista
 
-def es_capicua(lista) -> bool:
+def es_capicua(lista_final: list) -> bool:
     '''
     Evalúa si el contenido de la lista es capicúa
 
     Pre:
-        lista (list): la lista a revisar
+        lista_final (list): la lista a revisar
     Post:
-        false: la lista no es capicúa
-        true: la lista es capicúa
+        devuelve True si la lista es capicúa, en caso contrario False
     '''
 
-    for num in lista:
-        num_str = str(num)
-        if num_str != num_str[::-1]:
-            return False
-    return True
+    return lista_final == lista_final[::-1]
 
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa un valor a encontrar
-    '''
+if __name__ == "__main__":
+    lista = cargar_lista()
+    print(f"Lista: {lista}")
+    producto = calcular_producto(lista)
+    print(f"Producto de todos los elementos de la lista: {producto}")
     
-    valor = int(input("Valor a encontrar: "))
-    print(cargar_lista())
-    print(calcular_producto())
-    print(eliminar_valor(valor))
-
-    if es_capicua(lista):
-        print("La lista es capicúa :)")
+    try:
+        valor = int(input("\nValor a encontrar: "))
+    except ValueError:
+        print("ERROR. Revisa de ingresar un número entero válido :|")
     else:
-        print("La lista no es capicúa :(")
+        lista_final = eliminar_valor(lista, valor)
+        print(f"Lista final: {lista_final}")
 
-lista = []
-
-main()
+        if es_capicua(lista_final):
+            print("\nLa lista es capicúa :)")
+        else:
+            print("\nLa lista no es capicúa :(")

@@ -33,15 +33,18 @@ def grabarrangoalturas() -> None:
     Esta función no recibe parámetros y no devuelve ningún valor
     '''
 
-    with open(r'TP6\\alturas.txt', 'w', encoding='utf-8') as alturas:
+    with open('TP6/alturas.txt', 'w', encoding='utf-8') as alturas:
         while True:
-            deporte = input("Ingrese el deporte ('S' para salir): ")
+            deporte = input("Ingrese el deporte ('S' para salir): ").strip()
             if deporte.upper() == 'S':
+                print(f"Registro finalizado :)")
                 break
-            alturas.write(deporte + '\n')
+            alturas.write(deporte.capitalize() + '\n')
+
             while True:
-                altura = input("Ingrese la altura ('S' para salir): ")
+                altura = input("Ingrese la altura ('S' para salir): ").strip()
                 if altura.upper() == 'S':
+                    print(f"Registro de {deporte} finalizado :)")
                     break
                 alturas.write(altura + '\n')
             alturas.write('\n')
@@ -53,13 +56,9 @@ def grabarpromedio() -> None:
     Esta función no recibe parámetros y no devuelve ningún valor
     '''
 
-    with open(r'TP6\\alturas.txt', 'r', encoding='utf-8') as alturas_p:
-      contenido = alturas_p.readlines()
-
-      with open(r'TP6\\promedios.txt', 'w', encoding='utf-8') as promedios:
+    with open('TP6/alturas.txt', 'r', encoding='utf-8') as alturas, open('TP6/promedios.txt', 'w', encoding='utf-8') as promedios:
         registro_alturas = []
-
-        for linea in contenido:
+        for linea in alturas:
           linea = linea.strip()
           
           try:
@@ -79,12 +78,11 @@ def mostrarmasaltos() -> None:
     Esta función no recibe parámetros y no devuelve ningún valor
     '''
 
-    with open(r'TP6\\promedios.txt', 'r', encoding='utf-8') as promedios:
-        contenido = promedios.readlines()
+    with open('TP6/promedios.txt', 'r', encoding='utf-8') as promedios:
         registro_promedios = []
         deportes = []
 
-        for linea in contenido:
+        for linea in promedios:
             linea = linea.strip()
 
             try:
@@ -96,25 +94,16 @@ def mostrarmasaltos() -> None:
 
         if registro_promedios:
           max_promedio = sum(registro_promedios) / len(registro_promedios)
-          print(f"Promedio general: {max_promedio:.2f}")
+          print(f"\nPromedio general: {max_promedio:.2f}")
           print("Deportes cuyos atletas superan la altura promedio:")
 
           for i in range(len(registro_promedios)):
               if registro_promedios[i] > max_promedio:
                   print(deportes[i])
-            
         else:
             print("No se encontraron promedios válidos en el archivo :(")
 
-def main() -> None:
-    '''
-    Función principal, donde se ejecuta el programa
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-    
+if __name__ == "__main__":
     grabarrangoalturas()
     grabarpromedio()
     mostrarmasaltos()
-
-main()

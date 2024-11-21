@@ -12,9 +12,9 @@ memoria.
 
 from math import ceil
 
-def dividir_archivo(partes) -> None:
+def dividir_archivo(partes: int) -> None:
     '''
-    Divide el contenido del archivo 'archivocorreo.txt' en una n cantidad de fragmentos
+    Divide el contenido del archivo 'archivocorreo.txt' en una n cantidad de fragmentos, y cada fragmento se guarda en archivos numerados
 
     Pre:
         partes (int): tamaño máximo de caracteres de cada fragmento
@@ -23,40 +23,29 @@ def dividir_archivo(partes) -> None:
     '''
 
     try:
-        with open(r'TP6\archivocorreo.txt', 'r', encoding='utf-8') as correo:
+        with open('TP6/archivocorreo.txt', 'r', encoding='utf-8') as correo:
             contenido = correo.read()
-            longitud = len(contenido)
             sufijo = 0
             
             try:
-                if partes > longitud:
+                if partes > len(contenido):
                     raise ValueError("ERROR. La cantidad de caracteres es mayor que la longitud del texto :|")
                 
-                cant_fragmentos = ceil(longitud / partes)
+                cant_fragmentos = ceil(len(contenido) / partes)
                 
-                for i in range(cant_fragmentos):
+                for _ in range(cant_fragmentos):
                     fragmento = contenido[:partes]
                     contenido = contenido[partes:]
                     sufijo += 1
                     
-                    archivo = f'TP6\\archivocorreo{sufijo}.txt'
+                    archivo = f'TP6/archivocorreo{sufijo}.txt'
                     with open(archivo, 'w', encoding='utf-8') as partes_correo:
                         partes_correo.write(fragmento)
-
             except ValueError as m:
                 print(m)
-
     except FileNotFoundError:
         print("No se encontró el archivo :(")
 
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa el tamaño de las partes en las que dividir el archivo
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-    
-    partes = int(input("Tamaño máximo de las partes a dividir el archivo: "))
+if __name__ == "__main__":
+    partes = int(input("Tamaño máximo de caracteres de cada archivo: "))
     dividir_archivo(partes)
-
-main()

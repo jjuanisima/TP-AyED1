@@ -20,31 +20,20 @@ def registrar_apellidos() -> None:
     '''
 
     try:
-        with open(r'TP6\armenia.txt', 'w', encoding='utf-8') as armenia, \
-        open(r'TP6\españa.txt', 'w', encoding='utf-8') as espana, \
-        open(r'TP6\italia.txt', 'w', encoding='utf-8') as italia:
-
-            with open(r'TP6\nombres.txt', 'r', encoding='utf-8') as nombres:
+        with open('TP6/armenia.txt', 'w', encoding='utf-8') as armenia, open('TP6/españa.txt', 'w', encoding='utf-8') as espana, open('TP6/italia.txt', 'w', encoding='utf-8') as italia:
+            with open('TP6/nombres.txt', 'r', encoding='utf-8') as nombres:
                 for linea in nombres:
                     linea = linea.strip()
                     apellido, nombre = linea.split(', ')
 
-                    if apellido[-3:] == 'ian':
+                    if apellido.endswith('ian'):
                         armenia.write(linea + '\n')
-                    elif apellido[-2:] == 'ez':
+                    elif apellido.endswith('ez'):
                         espana.write(linea + '\n')
-                    elif apellido[-3:] == 'ini':
+                    elif apellido.endswith('ini'):
                         italia.write(linea + '\n')
     except FileNotFoundError:
         print("No se encontró el archivo :(")
 
-def main() -> None:
-    '''
-    Función principal, donde se ejecuta el programa
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     registrar_apellidos()
-
-main()

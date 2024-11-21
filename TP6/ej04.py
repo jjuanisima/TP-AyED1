@@ -16,23 +16,15 @@ def eliminar_comentarios() -> None:
     Esta función no recibe parámetros y no devuelve ningún valor
     '''
 
-    with open(r'TP6\\archivoconcomentarios.py', 'r', encoding='utf-8') as archivo:
+    with open('TP6/archivoconcomentarios.py', 'r', encoding='utf-8') as archivo:
         codigo = archivo.read()
 
         codigo_sin_comentarios = re.sub("(?m)\s*#.*$", "", codigo)
 
         codigo_sin_docstrings = re.sub("(?s)(\'\'\'(.*?)\'\'\'|\"\"\"(.*?)\"\"\")", "", codigo_sin_comentarios)
 
-        with open(r'TP6\\archivoconcomentarios.py', 'w', encoding='utf-8') as archivo:
+        with open('TP6/archivoconcomentarios.py', 'w', encoding='utf-8') as archivo:
             archivo.write(codigo_sin_docstrings.strip())
 
-def main() -> None:
-    '''
-    Función principal, donde se ejecuta el programa
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-    
+if __name__ == "__main__":
     eliminar_comentarios()
-
-main()

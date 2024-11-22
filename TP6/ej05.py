@@ -23,7 +23,7 @@ def leer_archivo1() -> None:
         linea = linea.rstrip()
 
         nombre = []
-        nombre.append(linea[0:17].strip())
+        nombre.append(linea[:17].strip())
         nombre.append(linea[17:26].strip())
         nombre.append(linea[26:].strip())
 

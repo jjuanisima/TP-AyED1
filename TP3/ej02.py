@@ -117,10 +117,7 @@ def printear_matriz(matriz: list) -> None:
     for fila in matriz:
         print(fila)
 
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa el valor de n y se ejecuta el programa
-    '''
+if __name__ == "__main__":
 
     n = int(input("Valor de N (tamaño de la matriz): "))
 
@@ -141,5 +138,3 @@ def main() -> None:
 
     print("\nMatriz f:")
     printear_matriz(matriz_f(n))
-
-main()

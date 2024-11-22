@@ -14,25 +14,22 @@ def leer_archivo1() -> None:
 
     Esta función no recibe parámetros ni devuelve ningún valor
     '''
-    
-    with open('TP6\empleados1.txt', 'r', encoding='utf-8') as archivo1:
-        lineas = archivo1.readlines()
+    try:
+        with open('TP6\empleados1.txt', 'r', encoding='utf-8') as archivo1:
+            lineas = archivo1.readlines()
 
-    nombres = []
-    for linea in lineas:
-        linea = linea.rstrip()
+        with open('TP6\empleados1.1.csv', 'w', newline='', encoding='utf-8') as archivo1csv:
+            archivo1csv.write("Nombre, Legajo, Dirección\n")
 
-        nombre = []
-        nombre.append(linea[:17].strip())
-        nombre.append(linea[17:26].strip())
-        nombre.append(linea[26:].strip())
+            for linea in lineas:
+                linea = linea.rstrip()
 
-        nombres.append(nombre)
-
-    with open('TP6\empleados1.1.csv', 'w', newline='', encoding='utf-8') as archivo1csv:
-        writer = csv.writer(archivo1csv)
-        writer.writerow(["Nombre", "Legajo", "Dirección"])
-        writer.writerows(nombres)
+                nombre = linea[:17].strip()
+                legajo = linea[17:26].strip()
+                direccion = linea[26:].strip()
+                archivo1csv.write(f"{nombre}, {legajo}, {direccion}\n")
+    except FileNotFoundError:
+        print("No se encontró el archivo :|")
 
 if __name__ == "__main__":
     leer_archivo1()

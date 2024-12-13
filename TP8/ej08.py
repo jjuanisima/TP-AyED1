@@ -16,15 +16,7 @@ def generar_diccionario() -> dict:
 
     return {num: num**2 for num in range(1, 21)}
 
-def main() -> None:
-    '''
-    Función principal, donde se imprime el diccionario generado
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-    
+if __name__ == "__main__":
     diccionario = generar_diccionario()
     for clave, valor in diccionario.items():
         print(f"{clave} ^ 2: {valor}")
-
-main()

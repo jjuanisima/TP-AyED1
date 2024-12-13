@@ -10,7 +10,7 @@ import re
 
 def arreglar_frase(frase: str) -> list:
     '''
-    Elimina los signos de puntuación de la frase y devuelve una lista con las palabras únicas, ordenadas por su len
+    Elimina los signos de puntuación de la frase y devuelve una lista con las palabras únicas, ordenadas por su longitud
 
     Pre:
         frase (str): la frase de entrada
@@ -26,18 +26,11 @@ def arreglar_frase(frase: str) -> list:
 
     return palabras_ordenadas
 
-def main() -> None:
-    '''
-    Función principal, donde se solicita al usuario una frase y se muestran las palabras únicas ordenadas por longitud
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-    
+if __name__ == "__main__":
     frase = input("Frase: ")
+    
     frase_final = arreglar_frase(frase)
 
     print("Palabras únicas ordenadas por longitud:")
     for palabra in frase_final:
         print(palabra)
-
-main()

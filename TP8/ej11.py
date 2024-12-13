@@ -25,17 +25,9 @@ def contarvocales(palabra: str) -> dict:
             cant_vocales[letra] += 1
     return cant_vocales
 
-def main() -> None:
-    '''
-    Función principal, donde se ejecuta el programa
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     palabra = "Pastafrola"
     resultado = contarvocales(palabra)
     print(f"Cantidad total de vocales:")
     for vocal, cantidad in resultado.items():
         print(f"{vocal}: {cantidad}")
-
-main()

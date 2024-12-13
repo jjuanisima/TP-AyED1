@@ -8,30 +8,18 @@ el uso de conjuntos para resolver este ejercicio.
 
 def encajan_fichas(ficha1: tuple, ficha2: tuple) -> bool:
     '''
-    Determina si dos fichas de dominó encajan, o sea si ambas fichas tienen un número en común
+    Determina si dos fichas de dominó encajan, o sea si tienen un número en común
 
     Pre:
-        ficha1 (tuple): una tupla con dos números, la primera ficha
-        ficha2 (tuple): una tupla con dos números, la segunda ficha
+        ficha1, ficha2 (tuple): una tupla con dos números
     Post:
-        devuelve True si las fichas encajan, False en caso contrario
+        devuelve True si las fichas encajan, en caso contrario False
     '''
 
     return not set(ficha1).isdisjoint(set(ficha2))
 
-def main() -> bool:
-    '''
-    Función principal, donde se evalúa si dos fichas de dominó encajan
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     ficha1 = (3, 4)
     ficha2 = (5, 4)
 
-    if encajan_fichas(ficha1, ficha2):
-        print(f"Las fichas {ficha1} y {ficha2} encajan :)")
-    else:
-        print(f"Las fichas {ficha1} y {ficha2} no encajan :(")
-
-main()
+    print(f"Las fichas {ficha1} y {ficha2} encajan :)") if encajan_fichas(ficha1, ficha2) else print(f"Las fichas {ficha1} y {ficha2} no encajan :(")

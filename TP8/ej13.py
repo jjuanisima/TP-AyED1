@@ -23,32 +23,25 @@ def buscarclave(diccionario: dict, valor: int) -> list:
             resultado.append(piloto)
     return resultado
 
-def main() -> None:
-    '''
-    Función principal, donde se ejecuta el programa
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     diccionario = {
         'schumacher': 7, 'hamilton': 7,
         'fangio': 5,
-        'prost': 4, 'vettel': 4,
-        'brabham': 3, 'stewart': 3, 'lauda': 3, 'piquet': 3, 'senna': 3, 'verstappen': 3,
+        'prost': 4, 'vettel': 4, 'verstappen': 4,
+        'brabham': 3, 'stewart': 3, 'lauda': 3, 'piquet': 3, 'senna': 3,
         'ascari': 2, 'g. hill': 2, 'clark': 2, 'fittipaldi': 2, 'hakkinen': 2, 'alonso': 2,
         'farina': 1, 'hawthorn': 1, 'p. hill': 1, 'surtees': 1, 'hulme': 1, 'rindt': 1, 'hunt': 1, 'andretti': 1, 'scheckter': 1, 'jones': 1, 'k. rosberg': 1, 'mansell': 1, 'd. hill': 1, 'villeneuve': 1, 'raikkonen': 1, 'button': 1, 'n. rosberg': 1
     }
 
     try:
         valor = int(input("Valor a buscar: "))
-        resultado = buscarclave(diccionario, valor)
-        if resultado:
-            for piloto in resultado:
-                campeonatos = diccionario[piloto]
-                print(f"{piloto}: {campeonatos} campeonatos")
-        else:
-            print("Ningún piloto tiene ese número de campeonatos :(")
     except ValueError:
         print("ERROR. Revisa de ingresar un número válido :|")
-    
-main()
+    else:
+        resultado = buscarclave(diccionario, valor)
+        if resultado:
+            print(f"Pilotos con {valor} campeonatos:")
+            for piloto in resultado:
+                print(f"- {piloto}")
+        else:
+            print("Ningún piloto tiene ese número de campeonatos :(")

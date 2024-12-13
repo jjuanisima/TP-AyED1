@@ -25,18 +25,10 @@ def eliminarclaves(diccionario: dict, claves: list) -> tuple:
             claves_eliminadas += 1
     return diccionario, claves_eliminadas
 
-def main() -> None:
-    '''
-    Función principal, donde se ejecuta el programa
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     diccionario = {1: "uno", 2: "dos", 3: "tres", 4: "cuatro", 5: "cinco", 6: "seis", 7: "siete", 8: "ocho", 9: "nueve"}
     claves = [1, 3, 5, 7, 9]
     diccionario_final, cant_claves = eliminarclaves(diccionario, claves)
 
     print(f"Diccionario final: {diccionario_final}")
     print(f"Cantidad de claves eliminadas: {cant_claves}")
-
-main()

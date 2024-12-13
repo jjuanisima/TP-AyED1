@@ -17,19 +17,12 @@ def tabla_multiplicar(n: int) -> dict:
 
     return {i: n * i for i in range(1, 13)}
 
-def main() -> None:
-    '''
-    Función principal, donde se solicita un número al usuario para mostrar su tabla de multiplicar
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     try:
         n = int(input("Número entero: "))
+    except ValueError:
+        print("ERROR. Revisa de ingresar un número entero :|")
+    else:
         tabla = tabla_multiplicar(n)
         for multiplo, resultado in tabla.items():
             print(f"{n} x {multiplo} = {resultado}")
-    except ValueError:
-        print("ERROR. Revisa de ingresar un número entero :|")
-
-main()

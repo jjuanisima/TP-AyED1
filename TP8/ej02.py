@@ -26,32 +26,40 @@ def fecha_extendida(fecha: tuple[int, int, int]) -> str:
     meses = ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
 
     anio_corte = 33
-    if anio > anio_corte:
-        anio += 1900
-    else:
-        anio += 2000
+    anio += 1900 if anio > anio_corte else 2000
 
     return f"{dia} de {meses[mes - 1]} de {anio}"
 
-def main() -> None:
+def validar_fecha(partes: list[str]) -> tuple[int, int, int]:
     '''
-    Función principal, donde se le solicita al usuario una fecha
+    Valida las partes de una fecha y la convierte a formato entero
 
-    Esta función no recibe parámetros y no devuelve ningún valor
+    Pre:
+        partes (list[str]): lista con día, mes y año como cadenas
+    Post:
+        devuelve una tupla (dia, mes, año) si la fecha es válida. En caso contrario levanta un ValueError
     '''
+    
+    if len(partes) != 3:
+        raise ValueError("Revisa que la fecha tenga formato DD/MM/AA :|")
 
+    dia, mes, anio = map(int, partes)
+    if not (dia >= 1 and dia <= 31):
+        raise ValueError("El día tiene que estar entre 1 y 31 :|")
+    if not (mes >= 1 and mes <= 12):
+        raise ValueError("El mes debe estar entre 1 y 12 :|")
+    if not len(str(anio)) == 2:
+        raise ValueError("El año debe tener sólo dos dígitos :|")
+    
+    return dia, mes, anio
+
+if __name__ == "__main__":
     try:
-        dia = int(input("Día: "))
-        mes = int(input("Mes: "))
-        anio = int(input("Año: "))
+        fecha_str = input("Ingrese la fecha DD/MM/AA: ").strip()
+        partes = fecha_str.split("/")
         
-        if len(str(anio)) > 2:
-            print("ERROR. Revisa que el año tenga sólo 2 dígitos :|")
-        else:
-            fecha = (dia, mes, anio)
+        fecha = validar_fecha(partes)
 
-            print(fecha_extendida(fecha))
-    except ValueError:
-        print("ERROR. Revisa de ingresar valores numéricos :|")
-
-main()
+        print(fecha_extendida(fecha))
+    except ValueError as e:
+        print(f"ERROR: {e}")

@@ -15,34 +15,28 @@ def eliminar_numero(conjunto: set, num_a_eliminar: int):
         conjunto (set): el conjunto del que se quiere eliminar el número
         num_a_eliminar (int): el número que se quiere eliminar
     Post:
-        el conjunto actualizado después de eliminar el número
+        el conjunto actualizado después de eliminar el número. En caso de que el número no exista, se levanta un KeyError
     '''
     
-    conjunto.remove(num_a_eliminar)
-    return conjunto
+    try:
+        conjunto.remove(num_a_eliminar)
+        return conjunto
+    except KeyError:
+        print(f"ERROR. El número {num_a_eliminar} no existe en el conjunto :|")
+        return conjunto
 
-def main() -> None:
-    '''
-    Función principal, donde el usuario ingresa valores a eliminar de un conjunto
-    
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-    
-    conjunto = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+if __name__ == "__main__":
+    conjunto = set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
+    print(conjunto)
     while True:
         try:
             num_a_eliminar = int(input("Número a eliminar (-1 para salir): "))
-
+        except ValueError:
+            print("ERROR. Revisa de ingresar un número válido :|")
+        else:
             if num_a_eliminar == -1:
                 print("Saliendo...")
                 break
 
-            print(eliminar_numero(conjunto, num_a_eliminar))
-
-        except KeyError:
-            print("ERROR. El número a eliminar no existe en el conjunto :|")
-        except ValueError:
-            print("ERROR. Revisa de ingresar un número válido :|")
-
-main()
+            print(f"\nConjunto actualizado: {eliminar_numero(conjunto, num_a_eliminar)}") if len(conjunto) > 0 else print("El conjunto está vacío :|")

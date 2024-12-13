@@ -25,20 +25,9 @@ def partes_correo(correo: str) -> tuple:
     usuario, dominio = correo.split('@')
     partes_dominio = dominio.split('.')
 
-    return usuario, partes_dominio
+    return usuario, *partes_dominio
 
-def main() -> None:
-    '''
-    Función principal, donde se solicita un correo electrónico a evaluar
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     correo = input("Correo electrónico: ")
 
-    if partes_correo(correo):
-        print(f"Partes del correo: {partes_correo(correo)}")
-    else:
-        print("Correo inválido :|")
-
-main()
+    print(f"{correo} -> {partes_correo(correo)}") if partes_correo(correo) else print("Correo inválido :|")

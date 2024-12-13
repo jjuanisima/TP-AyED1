@@ -51,13 +51,7 @@ def mas_costoso(lista_precios: dict) -> tuple:
         return valor_max, lista_precios[valor_max]
     return None, None
 
-def main() -> None:
-    '''
-    Función principal, donde se ejecuta el programa
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     lista_precios = {}
         
     while True:
@@ -86,5 +80,3 @@ def main() -> None:
 
     producto, precio = mas_costoso(lista_precios)
     print(f"\nProducto más costoso: '{producto}' - ${precio}")
-
-main()

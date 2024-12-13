@@ -19,27 +19,15 @@ def son_ortogonales(vectora: tuple, vectorb: tuple) -> bool:
     Determina si dos vectores son ortogonales, calculando su producto escalar
 
     Pre:
-        vectora (tuple): una tupla de números que representa el primer vector
-        vectorb (tuple): una tupla de números que representa el segundo vector
+        vectora, vectorb(tuple): dos tuplas de números que representas el primer y el segundo vector
     Post:
         devuelve True si el producto escalar de los vectores es cero (son ortogonales), False en caso contrario
     '''
 
     return sum(a * b for a, b in zip(vectora, vectorb)) == 0
 
-def main() -> None:
-    '''
-    Función principal, donde se evalúa si dos vectores son ortogonales
-
-    Esta función no recibe parámetros y no devuelve ningún valor
-    '''
-
+if __name__ == "__main__":
     vectora = (3, 4)
     vectorb = (-4, 3)
 
-    if son_ortogonales(vectora, vectorb):
-        print(f"Los vectores {vectora} y {vectorb} son ortogonales :)")
-    else:
-        print(f"Los vectores {vectora} y {vectorb} no son ortogonales :(")
-
-main()
+    print(f"Los vectores {vectora} y {vectorb} son ortogonales :)") if son_ortogonales(vectora, vectorb) else print(f"Los vectores {vectora} y {vectorb} no son ortogonales :(")

@@ -8,7 +8,7 @@ funciones min() ni max() de Python
 
 from typing import List
 
-def ordenar_lista(lista: List[int], izq=0):
+def ordenar_lista(lista: List[int], izq=0) -> List[int]:
     '''
     Ordena la lista intercambiando los números de acuerdo a si el de la izquierda es mayor que el de la derecha
 

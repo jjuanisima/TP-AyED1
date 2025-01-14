@@ -17,26 +17,31 @@ def calcular_gastos(viajes: int) -> float:
     Post:
         devuelve el total gastado en viajes
     '''
-
     tarifa_maxima = 650.0
-    total = 0.0
 
     if viajes > 40:
-        total = viajes * (tarifa_maxima * 0.60)
+        return viajes * (tarifa_maxima * 0.60)
     elif viajes >= 31 and viajes <= 40:
-        total = viajes * (tarifa_maxima * 0.70)
+        return viajes * (tarifa_maxima * 0.70)
     elif viajes >= 21 and viajes <= 30:
-        total = viajes * (tarifa_maxima * 0.80)
-    return total
+        return viajes * (tarifa_maxima * 0.80)
+    else:
+        return viajes * tarifa_maxima
 
-if __name__ == "__main__":
+def main() -> None:
+    '''
+    Función principal que maneja el flujo del programa
+    No recibe parámetros ni devuelve ningún valor
+    '''
     try:
         viajes = int(input("Cantidad de viajes realizados: "))
-
-        if viajes < 1:
-            print("ERROR. Ingresa una cantidad válida de viajes :|")
-        else:
-            total = calcular_gastos(viajes)
-            print(f"El total gastado en {viajes} viajes es de ${total} :)")
     except ValueError:
         print("ERROR. Intenta ingresando un número entero.")
+
+    if viajes < 1:
+        print("ERROR. Ingresa una cantidad válida de viajes :|")
+    else:
+        total = calcular_gastos(viajes)
+        print(f"El total gastado en {viajes} viajes es de ${total} :)")
+if __name__ == "__main__":
+    main()

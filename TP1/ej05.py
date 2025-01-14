@@ -14,21 +14,22 @@ vuelven True o False. No se permite utilizar ayudas externas a las mismas.
 '''
 
 
-num_oblongo = lambda num: any(num == i * (i + 1) for i in range(num))
-num_triangular = lambda num: any(num == i * (i + 1) // 2 for i in range(1, num))
+def main() -> None:
+    '''
+    Función principal que maneja el flujo del programa
+    No recibe parámetros ni devuelve ningún valor
+    '''
+    num_oblongo = lambda num: any(num == i * (i + 1) for i in range(num))
+    num_triangular = lambda num: any(num == i * (i + 1) // 2 for i in range(1, num))
 
-if __name__ == "__main__":
     try:
         num = int(input("Número: "))
-
-        if num_oblongo(num):
-            print(f"El número {num} es oblongo :)")
-        else:
-            print(f"El número {num} no es oblongo :(")
-
-        if num_triangular(num):
-            print(f"El número {num} es triangular :)")
-        else:
-            print(f"El número {num} no es triangular :(")
     except ValueError:
         print(f"ERROR. Revisa de ingresar un número entero.")
+        
+    print(f"Es oblongo") if num_oblongo(num) else print(f"No es oblongo")
+
+    print(f"Es triangular") if num_triangular(num) else print(f"No es triangular")
+    
+if __name__ == "__main__":
+    main()

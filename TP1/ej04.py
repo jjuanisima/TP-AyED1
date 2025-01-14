@@ -21,7 +21,6 @@ def calcular_cambio(vuelto: int) -> list:
     Post:
         devuelve una lista de tuplas (cantidad, billete) para el vuelto
     '''
-
     billetes = (5000, 1000, 500, 200, 100, 50, 10)
 
     billetes_vuelto = []
@@ -30,26 +29,32 @@ def calcular_cambio(vuelto: int) -> list:
         if cantidad > 0:
             billetes_vuelto.append((cantidad, billete))
         vuelto %= billete
-    
     return billetes_vuelto
 
-if __name__ == "__main__":
+def main() -> None:
+    '''
+    Función principal que maneja el flujo del programa
+    No recibe parámetros ni devuelve ningún valor
+    '''
     try:
         total_compra = int(input("Total de la compra: "))
         dinero_recibido = int(input("Dinero recibido: "))
-
-        if dinero_recibido < total_compra:
-            print("ERROR. El dinero recibido es insuficiente :|")
-        else:
-            vuelto = dinero_recibido - total_compra
-            if vuelto == 0:
-                print("No hay cambio que devolver :)")
-            elif vuelto % 10 != 0:
-                print("No es posible dar el cambio exacto con los billetes disponibles :(")
-            else:
-                print(f"\nEl cambio total es de ${vuelto}:")
-                resultado = calcular_cambio(vuelto)
-                for cant, billete in resultado:
-                    print(f"{cant} billete(s) de ${billete}")
     except ValueError:
         print("ERROR. Revisa que los valores de compra y dinero recibido sean números enteros :|")
+
+    if dinero_recibido < total_compra:
+        print("ERROR. El dinero recibido es insuficiente :|")
+    else:
+        vuelto = dinero_recibido - total_compra
+        if vuelto == 0:
+            print("No hay cambio que devolver :)")
+        elif vuelto % 10 != 0:
+            print("No es posible dar el cambio exacto con los billetes disponibles :(")
+        else:
+            print(f"\nEl cambio total es de ${vuelto}:")
+            resultado = calcular_cambio(vuelto)
+            for cant, billete in resultado:
+                print(f"{cant} billete(s) de ${billete}")
+    
+if __name__ == "__main__":
+    main()

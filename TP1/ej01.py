@@ -16,14 +16,17 @@ def mayor_estricto(a: int, b: int, c: int) -> int:
     Post:
         devuelve el mayor estricto, en caso contrario -1
     '''
-
     numeros = [a, b, c]
     mayor = max(numeros)
     if numeros.count(mayor) == 1:
         return mayor
     return -1
 
-def main():
+def main() -> None:
+    '''
+    Función principal que maneja el flujo del programa
+    No recibe parámetros ni devuelve ningún valor
+    '''
     try:
         a = int(input("Número A: "))
         b = int(input("Número B: "))

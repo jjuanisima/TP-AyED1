@@ -23,19 +23,22 @@ def mayor_estricto(a: int, b: int, c: int) -> int:
         return mayor
     return -1
 
-if __name__ == "__main__":
+def main():
     try:
         a = int(input("Número A: "))
         b = int(input("Número B: "))
         c = int(input("Número C: "))
-
-        if a < 1 or b < 1 or c < 1:
-            print("ERROR. Intenta con números positivos :|")
-        else:
-            resultado = mayor_estricto(a, b, c)
-            if resultado == -1:
-                print("Los tres números ingresados son iguales :|")
-            else:
-                print(f"El mayor estricto es el número {resultado} :)")
     except ValueError:
         print("ERROR. Intenta ingresando números enteros.")
+
+    if a < 1 or b < 1 or c < 1:
+        print("ERROR. Intenta con números positivos :|")
+    else:
+        resultado = mayor_estricto(a, b, c)
+        if resultado == -1:
+            print("Los tres números ingresados son iguales :|")
+        else:
+            print(f"El mayor estricto es el número {resultado} :)")
+
+if __name__ == "__main__":
+    main()

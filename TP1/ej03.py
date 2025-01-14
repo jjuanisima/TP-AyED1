@@ -43,5 +43,6 @@ def main() -> None:
     else:
         total = calcular_gastos(viajes)
         print(f"El total gastado en {viajes} viajes es de ${total} :)")
+        
 if __name__ == "__main__":
     main()
